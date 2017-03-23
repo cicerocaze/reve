@@ -1,2 +1,4 @@
-# reve
-RêVe - Aplicação para anotação linguística
+reve
+====
+
+Rêve

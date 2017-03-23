@@ -1,0 +1,20 @@
+
+<form action="<% request.uri_base %>/new" method="POST">
+	<input type="hidden" name="step" value="2"/>
+
+	<p>
+		<label for="corpo">Corpo:</label>
+		<select id="corpo" name="corpo">
+			<% FOREACH c IN corpora.keys %>
+				<option value="<% c %>"><% corpora.$c %></option>
+			<% END %>
+		</select>
+	</p>
+	<p>
+		<label for="query">Expressão de pesquisa:</label>
+		<input type="text" name="query" id="query" size="50" />
+	</p>
+	<p>
+		<input type="submit" value=" procurar "/>
+	</p>
+</form>

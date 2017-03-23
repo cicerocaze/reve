@@ -1,0 +1,37 @@
+
+<h2><% project.titulo %></h2>
+
+<div style="float: right">
+  <form action="<% request.uri_base %>/bootstrap/<% project.id %>/<% username %>">
+    <button type="submit"><span class="glyphicon glyphicon-pencil"></span> Rêver esta anotação</button></form>
+</div>
+<blockquote>
+  <% project.desc %>
+</blockquote>
+
+<% use Dumper %>
+<!-- % Dumper.dump_html(concs) % -->
+
+<% FOREACH conc IN concs %>
+ <div class="conc">
+
+   <div class="class">
+     <% cid = conc.id; %>
+     <% FOREACH class IN revs.$cid %>
+       <% classes.$class.name %>
+       <%- ", " UNLESS loop.last%> 
+     <% END %>
+     <br/>
+     <i><% obs.$cid %></i>
+   </div>
+   
+   <div class="text">
+     <% conc.text %>
+   </div>
+
+   <div class="clear"></div>
+ </div>
+<% END %>
+</form>
+
+

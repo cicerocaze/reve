@@ -1,0 +1,37 @@
+<p>
+    <form action="<% request.uri_base %>/new" method="POST">
+        <button class="new" type="submit"><span class="glyphicon glyphicon-file"></span> Novo Projeto de Rêvisão.</button>
+    </form>
+</p>
+
+<h2>Rêvisões em Curso</h2>
+
+<div class="container-fluid">
+    <% IF current %>
+        <% FOREACH rev IN current %>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <% rev.titulo %>
+                    </div>
+
+                    <div style="margin: 4px">
+                        <a href="<% request.uri_base %>/bootstrap/<% rev.id %>"><span class="glyphicon glyphicon-pencil"> </span> Anotar</a> |
+                        <a href="<% request.uri_base %>/tsv/<% rev.id %>"><span class="glyphicon glyphicon-download-alt"></span> Exportar Revisões</a> |
+						<a href="<% request.uri_base%>/stats/<% rev.id %>"><span class="glyphicon glyphicon-tasks"></span> Estatísticas</a> |
+						<a href="<% request.uri_base%>/remov/<% rev.id %>"><span class="glyphicon glyphicon-remove"></span> Remover Projeto</a>
+                        
+						<p style="margin-top: 5px">Revisões disponíveis:
+                            <% FOREACH reviser IN rev.revisors %>
+                                <a href="<% request.uri_base %>/view/<% rev.id %>/<% reviser %>">
+                                    <% reviser %>
+                                </a>
+                                <%- ", " UNLESS loop.last %>
+                            <% END %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        <% END %>
+    <% END %>
+</div>

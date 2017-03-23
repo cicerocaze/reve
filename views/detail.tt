@@ -1,0 +1,21 @@
+<h2><% project.titulo %></h2>
+
+<blockquote>
+  <% project.desc %>
+</blockquote>
+
+<p style="margin: 5px; padding: 5px; border: solid 1px #999999;">
+   <% conc.text %></p>
+
+<h3>Anotações</h3>
+<div style="margin: 10px">
+
+  <% FOREACH rev IN revisions %>
+  <div>
+  	<b><% rev.timestamp %></b> por <i><% rev.username %></i> &mdash; <b><% rev.class.name %></b> <% rev.class.desc %>
+  	<br/>
+  	<blockquote><% rev.obs %></blockquote>
+  </div>
+  <% END %>
+
+</div>

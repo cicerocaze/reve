@@ -1,0 +1,9 @@
+
+<table>
+  <tr>
+    <td></td>
+    <% FOREACH user IN by_author.keys %>
+    <td><% by_author.$user %></td>
+    <% END %>
+  </tr>
+</table>

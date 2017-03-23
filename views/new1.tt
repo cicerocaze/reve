@@ -1,0 +1,21 @@
+
+<h2>Criar uma nova Rêvisão</h2>
+
+<form action="<% request.uri_base %>/new" method="POST">
+  <input type="hidden" name="step" value="1"/>
+  <p>
+    <label for="title">Título: <span class="required">*</span></label>
+    <input type="text" size="50" id="title" name="title" placeholder="Título do projeto de rêvisão"/>
+  </p>
+  <p>
+    <label for="desc">Descrição:</label>
+    <textarea id="desc" name="desc" cols="50" rows="5"></textarea>
+  </p>
+  <p>
+    <label for="autor">Autor:</label>
+    <input type="text" size="50" id="autor" name="autor" placeholder="Nome do Autor"/>
+  </p>
+  <p>
+    <input type="submit" value=" próximo &gt; "/>
+  </p>
+</form>

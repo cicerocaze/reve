@@ -1,0 +1,41 @@
+
+<h2>Criar uma nova Rêvisão</h2>
+
+<h3><% title %></h3>
+
+
+<% IF session.status.concs.size > 0 %>
+  <p>Até ao momento já recolheu <% session.status.concs.size %> exemplos.</p>
+<% END %>
+
+
+<form action="<% request.uri_base %>/new" method="POST">
+
+<input type="hidden" name="step" value="3"/>
+
+<p>
+  <button type="submit" name="submit" value="addMore">Adicionar Mais Ocorrências</button>
+  <button type="submit" name="submit" value="addEnd">Continuar &gt;</button>
+</p>
+
+<% FOREACH conc IN current.results %>
+<div class="conc">
+  <label style="font-weight: normal;">
+    <input type="checkbox" name="conc" value="<% loop.index %>"/><% conc %>
+  </label>
+</div>
+<% END %>
+
+
+<p>
+  <button type="submit" name="submit" value="addMore">Adicionar Mais Ocorrências</button>
+  <button type="submit" name="submit" value="addEnd">Continuar &gt;</button>
+</p>
+
+</form>
+
+<% IF show_debug %>
+  <% USE Dumper %>
+  <% Dumper.dump_html(session) %>
+<% END %>
+

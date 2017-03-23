@@ -1,0 +1,73 @@
+
+<h2>Criar uma nova Rêvisão</h2>
+
+<h3><% title %></h3>
+
+<% IF session.status.concs.size > 0 %>
+  <p>Recolheu <% session.status.concs.size %> exemplos.</p>
+
+<hr/>
+
+Definição de classes de classificação:
+
+<style type="text/css">
+  #classes { 
+     display: inline-block;
+     margin: 4px;
+     padding: 4px;
+     border: solid 1px #999999;
+     background-color: #dedede;
+  }
+</style>
+
+<script type="text/javascript">
+  function add() {
+      var classe = $('#classe').val();
+      var texto  = $('#descritor').val();
+      if ($('#classes').html().match(/nenhuma classe definida/)) {
+        $('#classes').html("");
+      }
+      $('#classes').append( "<input type='hidden' name='class' value='"+classe+"'/>");
+      $('#classes').append( "<input type='hidden' name='classD' value='"+texto+"'/>");
+      if (texto.length > 40) {
+          texto = texto.substring(0,40) + "...";
+      }
+      $('#classes').append( "<div><b>" + classe + "</b> &mdash; "+ texto +"</div>");
+      $('#classe').val("");
+      $('#descritor').val("");
+  }
+</script>
+
+<form method="POST" action="<% request.uri_base %>/new">
+  <input type="hidden" name="step" value="4"/>
+  <div id="classes">(nenhuma classe definida)</div>
+  
+  <p>
+    <label>Identificador da classe: 
+      <input type="text" size="20" name="classe" id="classe" placeholder="Nome Classe"/>
+    </label>
+  </p>
+
+  <p>
+    <label>Descritor da classe: 
+      <input type="text" size="40" name="descritor" id="descritor" placeholder="Descrição da classe"/>
+    </label>
+  </p>
+
+  <p>
+    <button onClick="add(); return false;"> Adicionar </button>
+    <button type="submit" name="submit">Terminar &gt;</button>
+  </p>
+</form>
+  
+
+
+<% ELSE %>
+  <!-- sem exemplos, nada feito -->
+<p>Não selecionou nenhuma concordância. Processo abortado.</p>
+<% END %>
+
+<% IF show_debug %>
+   <% USE Dumper %>
+   <% Dumper.dump_html(session) %>
+<% END %>

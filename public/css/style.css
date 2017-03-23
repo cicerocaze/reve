@@ -1,0 +1,186 @@
+
+a.title { 
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+a.title:hover { 
+  text-decoration: underline;
+  color: #FFFFFF;
+}
+
+button, select, textarea, input { 
+  border: solid 1px #777777;
+  border-radius: 5px;
+  padding: 4px;
+}
+
+button:hover, input[type="submit"]:hover { 
+  background-color: #dddddd;
+  cursor: pointer;
+}
+
+
+
+.required { 
+  color: #AA0000;
+}
+
+label {  
+  display: block;
+}
+
+
+html, body {
+  margin: 0px;
+  padding: 0px; 
+}
+
+#linguateca {
+  margin: 0px;
+  padding: 0px;
+  height: 80px;
+  background-color: #2D72D7;
+  border-bottom: solid 2px rgb(37, 94, 175);
+}
+
+#linguateca div {
+  float: right;
+  padding-right: 20px;
+  text-align: right;
+}
+
+#linguateca div a:hover {
+  text-decoration: underline;
+}
+#linguateca div a {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  display: block;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+#linguateca h1 {
+  color: #FFFFFF;
+  font-weight: bold;
+  margin: 0px;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+/* -------------------------------------- */
+
+.revisoes {
+	margin: 5px;
+	padding: 10px;
+	background-color: #ffffff;
+	border: solid 1px #757575;
+}
+
+#contents {
+	margin: 0 10px 0 10px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.clear {
+	clear: both;
+}
+
+.conc {
+	padding: 5px;
+	margin-top: 5px;
+	border-top: dashed 1px #DEDEDE;
+}
+
+.conc .text {
+	width: 80%;
+}
+
+.class {
+  padding-top: 0px;
+  width: 18%;
+  float: right;
+}
+
+/* ------------------- */
+
+.dropdown dd, .dropdown dt {
+    margin:0px;
+    padding:0px;
+}
+.dropdown ul {
+    margin: -1px 0 0 0;
+}
+.dropdown dd {
+    position:relative;
+}
+.dropdown {
+  color: #fff;
+  font-size: small;
+}
+
+.dropdown dt {
+  background-color:#4F6877;
+  display:block;
+  padding: 10px 10px 10px 10px;
+  overflow: hidden;
+  border:0;
+  margin: 0;
+  width: 80%;
+}
+.dropdown dt span, .multiSel span {
+  margin: 0px;
+  cursor: pointer;
+  display: inline-block;
+}
+.dropdown dt:hover {
+  background-color: #6F8A99;
+}
+.dropdown dd ul li:hover {
+  background-color:#4F6877;
+}
+.dropdown dd ul {
+  background-color: #6F8A99;
+  border:0;
+  color:#fff;
+  display:none;
+  left:0px;
+  padding: 2px 15px 2px 5px;
+  position:absolute;
+  top:2px;
+  width: 80%;
+  list-style:none;
+  height: 120px;
+  border: solid 1px #999999;
+  overflow: auto;
+}
+.dropdown span.value {
+    display:none;
+}
+.dropdown dd ul li a {
+    padding:5px;
+    display:block;
+}
+.dropdown dd ul li a:hover {
+    background-color:#fff;
+}
+.multiSelect {
+  margin: 0 auto;
+}
+.dropdown {
+  margin: 0px;
+  padding: 0px;
+  margin-bottom: 5px;
+}
+.multiSel {
+  margin: 0px;
+  padding: 0px;
+}
+
+label {
+  cursor: pointer;
+}
