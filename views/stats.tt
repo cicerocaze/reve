@@ -15,13 +15,15 @@
 	<p>Contabilização de categorias de forma independente.
     Isto leva a que a soma total de cada coluna não seja necessariamente a mesma.</p>
 
-	<table name="contInd" class="table table-striped table-condensed table-nonfluid table-bordered">
+	<table class="table table-striped table-condensed table-nonfluid table-bordered">
 	  <thead>
 		<tr>
 		  <th></th>
 		  <% FOREACH user IN by_author.keys.sort %>
 			<th><% user %></th>
 		  <% END %>
+		  <!--<th>Totais</th>-->
+		  
 		</tr>
 	  </thead>
 	  <tbody>
@@ -30,12 +32,26 @@
 		  <td><% class %></td>
 		  <% FOREACH user IN by_author.keys.sort %>
 			<td><% by_author.$user.$class || 0 %></td>
-		  <% END %>
+		  <% END %>		
 		</tr>
 		<% END %>
 	  </tbody>
+		<!--<tfoot>
+			<tr>
+				<td>Totais</td>
+				
+			</tr>
+		</tfoot>-->
 	</table>
+	<script language="javascript" type="text/javascript">
+	$(".table").calcTable({
+		"skipFirstColumn" : true,
+		"totalText": "<strong>Totais</strong>",
+		"totalClass": "className anotherClassName"
+	});
+</script>
 </div>
+
 
 <div class="air">
 
