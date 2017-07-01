@@ -15,9 +15,31 @@ function obtain_user_name_to_review (other_user) {
         success: function (data) {
             fill_obs(data['obs']);
             fill_revs(data['revs']);
+        } 
+    });
+}
+
+/*
+function obtain_user_name_to_remove_project (other_user) {
+    var username = null;
+    username = prompt("Introduza nome do utilizador.");
+
+    if (!username) {
+	window.location = $("#uri_base").val();
+    }
+
+    $("#username").val(username);
+
+    $.ajax({
+        dataType: "json",
+        url: uri_base + "/json/" + project_id + "/" + other_user,
+        success: function (data) {
+            fill_obs(data['obs']);
+            fill_revs(data['revs']);
         }
     });
 }
+*/
 
 function esconder_revisoes() {
 	$(".revisoes").hide();

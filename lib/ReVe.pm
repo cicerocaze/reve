@@ -285,12 +285,11 @@ get '/bootstrap/*/*' => sub {
 	}
 };
 
-#--------------------------------------------------------------
-
+#------------------------------------------------------------
 #Remove projeto da Base de dados
 #------------------------------------------------------------
 
-get '/remov/*' => sub {
+post '/remov/*' => sub {
 	my ($id) = splat;
 
 	my $concs = _get_concs($id);
@@ -306,7 +305,7 @@ get '/remov/*' => sub {
 	}
 };
 
-#--------------------------------------------------------------
+#------------------------------------------------------------
 
 get '/details/*/*' => sub {
 	my ($id, $conc_id) = splat;
@@ -410,6 +409,17 @@ sub _clear_annotations_project_user {
     my $sth = database->prepare("DELETE FROM revision WHERE username = ? AND conc_id IN (SELECT id FROM conc WHERE rev_id = ?)");
     $sth->execute($username, $id);
 }
+
+#----------------------------------------
+# Sub-rotina para remoção de projeto
+#----------------------------------------
+sub _remove_project {
+    my ($id) = @_;
+
+    my $sth = database->prepare("DELETE FROM rev WHERE id = ?");
+    $sth->execute($id);
+}
+#----------------------------------------
 
 # CREATE TABLE "revision" ("conc_id" INTEGER NOT NULL,
 #                          "class_id" INTEGER NOT NULL,

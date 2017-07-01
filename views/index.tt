@@ -19,7 +19,7 @@
                         <a href="<% request.uri_base %>/bootstrap/<% rev.id %>"><span class="glyphicon glyphicon-pencil"> </span> Anotar</a> |
                         <a href="<% request.uri_base %>/tsv/<% rev.id %>"><span class="glyphicon glyphicon-download-alt"></span> Exportar Revisões</a> |
 						<a href="<% request.uri_base%>/stats/<% rev.id %>"><span class="glyphicon glyphicon-tasks"></span> Estatísticas</a> |
-						<a href="<% request.uri_base%>/remov/<% rev.id %>"><span class="glyphicon glyphicon-remove"></span> Remover Projeto</a>
+						<a href="<% request.uri_base%>/bootstrap/<% rev.id %>"><span class="glyphicon glyphicon-remove"></span> Remover Projeto</a>
                         
 						<p style="margin-top: 5px">Revisões disponíveis:
                             <% FOREACH reviser IN rev.revisors %>
