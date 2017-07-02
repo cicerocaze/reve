@@ -12,9 +12,9 @@ The installation follows the same instructions provided for deploying any Dancer
 ## Installing Rêve
 
 Equally to Dancer Framework, depending on the operating system, Rêve needs to have the Perl environment setted to be deployed.
-For Linux users this is not necessary. For Windows users, there are two most used environments.
+For Linux users this is not necessary because Perl is a native Linux Language. For Windows users, there are two most used environments.
 They are: Strawberry Perl or Dwimperl (Derivated from Strawberry Perl), including modules as: Perl IDE, Perl Dancer, Moose, Plack and plackup and others.
-Check the page (http://dwimperl.com/windows.html) for more details.
+Check the page http://dwimperl.com/windows.html for more details.
 
 ### Quality Supervision
 
