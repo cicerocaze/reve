@@ -1,57 +1,20 @@
-﻿Reve
+﻿Rêve
 ====
 
-# Git Guide
+# About Rêve
 
-This guide will help you to set up your environment to be able to work
-on the Dancer2's repository.
+Reve is a web application based on Perl Dancer framework. This application is developed to help linguist professionals to create annotations about linguistic corpus data.  
 
-## Contributing
+## About Installation
 
-This guide has been written to help anyone interested in contributing
-to the development of Dancer2.
+The installation follows the same instructions provided for deploying any Dancer application. The difference is related to the modules the application require to be deployed. To check details, please, visit: (http://perldancer.org/quickstart). Bellow, It is explained the needs and steps to deploy Rêve application.
 
-First of all - thank you for your interest in the project!  It's the
-community of helpful contributors who've helped Dancer grow
-phenomenally. Without the community we wouldn't be where we are today!
+## Installing Rêve
 
-Please read this guide before contributing to Dancer2, to avoid wasted
-effort and maximizing the chances of your contributions being used.
-
-There are many ways to contribute to the project. Dancer2 is a young
-yet active project and any kind of help is very much appreciated!
-
-### Documentation
-
-We value documentation very much, but it's difficult to keep it
-up-to-date.  If you find a typo or an error in the documentation
-please do let us know - ideally by submitting a patch (pull request)
-with your fix or suggestion (see
-[Patch Submission](#environment-and-patch-submission)).
-
-### Code
-
-You can write extensions (plugins) for Dancer2 extending core
-functionality or contribute to Dancer2's core code, see
-[Patch Submission](#environment-and-patch-submission) below.
-
-## General Development Guidelines
-
-This section lists high-level recommendations for developing Dancer2,
-for more detailed guidelines, see [Coding Guidelines](#coding-guidelines)
-below.
-
-### Quality Assurance
-
-Dancer2 should be able to install for all Perl versions since 5.8, on
-any platform for which Perl exists. We focus mainly on GNU/Linux (any
-distribution), \*BSD and Windows (native and Cygwin).
-
-We should avoid regressions as much as possible and keep backwards
-compatibility in mind when refactoring. Stable releases should not
-break functionality and new releases should provide an upgrade path
-and upgrade tips such as warning the user about deprecated
-functionality.
+Equally to Dancer Framework, depending on the operating system, Rêve needs to have the Perl environment setted to be deployed.
+For Linux users this is not necessary. For Windows users, there are two most used environments.
+They are: Strawberry Perl or Dwimperl (Derivated from Strawberry Perl), including modules as: Perl IDE, Perl Dancer, Moose, Plack and plackup and others.
+Check the page (http://dwimperl.com/windows.html) for more details.
 
 ### Quality Supervision
 
