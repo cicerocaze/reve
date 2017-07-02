@@ -33,7 +33,7 @@ When Perl Dancer2 installation is finished, download Rêve application at: https
 
 The application has to be deployed with the following message in the terminal:
 
-    HTTP :: Server :: PSGI: Accepting connections at http: // 0: 5000 /
+    HTTP::Server::PSGI: Accepting connections at http://0:5000/
 
 When the application be deployed, open some browser and access it at "localhost: 5000" to see the application running.
 
