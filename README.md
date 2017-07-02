@@ -23,10 +23,28 @@ For both type of Operational Systems, it will be necessary to install Dancer fra
 
     $ cpan install Dancer2
 
-The Perl Dancer2 framework will be downloaded and installed, and with it, lots of mandatory modules are installed too.  
+The Perl Dancer2 framework will be downloaded and installed, and with it, lots of mandatory modules are installed too.
 
+### 3 - Deploying Rêve
 
-...
+When Perl Dancer2 installation is finished, download Rêve application at: https://github.com/cicerocaze/reve.git. In the terminal, access the folder of the application and use the commands bellow to deploy Rêve, locally:
 
+    $ Plackup bin/app.pl
 
-You're now ready to start working on a new pull request!
+The application has to be deployed with the following message in the terminal:
+
+    HTTP::Server::PSGI: Accepting connections at http://0:5000/
+
+When the application deploys, open some some browser and access it at "localhost:5000" to see the application running.
+
+## Final considerations
+
+In the third step, possibly, it miss some module. When that happen, it will show a message saying the name of the module is missed. This way, just use the commands "cpan install <Name::OfThe::Module>" to install the missed modules. See some common examples of missing modules errors:
+
+    $ cpan install Dancer2::Plugin::Database
+    $ cpan install DBD::SQLite
+    $ cpan install Plack::Runner
+
+When the installation of the missed modules is finished, try to deploy repeating the commands "Plackup bin/app.pl". When the application deploys, go to the browser e access: localhost:5000 to check the application.
+
+    * This is happaning because the Makefile.pl is not being updated automatically, for while.
