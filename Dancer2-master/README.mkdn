@@ -1,0 +1,231 @@
+# NAME
+
+Dancer2 - Lightweight yet powerful web application framework
+
+# VERSION
+
+version 0.204001
+
+# DESCRIPTION
+
+Dancer2 is the new generation of [Dancer](https://metacpan.org/pod/Dancer), the lightweight web-framework for
+Perl. Dancer2 is a complete rewrite based on [Moo](https://metacpan.org/pod/Moo).
+
+Dancer2 can optionally use XS modules for speed, but at its core remains
+fatpackable (packable by [App::FatPacker](https://metacpan.org/pod/App::FatPacker)) so you could easily deploy Dancer2
+applications on hosts that do not support custom CPAN modules.
+
+Dancer2 is easy and fun:
+
+    use Dancer2;
+    get '/' => sub { "Hello World" };
+    dance;
+
+This is the main module for the Dancer2 distribution. It contains logic for
+creating a new Dancer2 application.
+
+You are welcome to join our mailing list.
+For subscription information, mail address and archives see
+[http://lists.preshweb.co.uk/mailman/listinfo/dancer-users](http://lists.preshweb.co.uk/mailman/listinfo/dancer-users).
+
+We are also on IRC: #dancer on irc.perl.org.
+
+## Documentation Index
+
+Documentation on Dancer2 is split into several manpages. Below is a
+complete outline on where to go for help.
+
+- Dancer2 Tutorial
+
+    If you are new to the Dancer approach, you should start by reading
+    our [Dancer2::Tutorial](https://metacpan.org/pod/Dancer2::Tutorial).
+
+- Dancer2 Manual
+
+    [Dancer2::Manual](https://metacpan.org/pod/Dancer2::Manual) is the reference for Dancer2. Here you will find
+    information on the concepts of Dancer2 application development and
+    a comprehensive reference to the Dancer2 domain specific
+    language.
+
+- Dancer2 Keywords
+
+    The keywords for Dancer2 can be found under [DSL Keywords](https://metacpan.org/pod/Dancer2::Manual#DSL-KEYWORDS).
+
+- Dancer2 Deployment
+
+    For configuration examples of different deployment solutions involving
+    Dancer2 and Plack, refer to [Dancer2::Manual::Deployment](https://metacpan.org/pod/Dancer2::Manual::Deployment).
+
+- Dancer2 Cookbook
+
+    Specific examples of code for real-life problems and some 'tricks' for
+    applications in Dancer can be found in [Dancer2::Cookbook](https://metacpan.org/pod/Dancer2::Cookbook)
+
+- Dancer2 Config
+
+    For configuration file details refer to [Dancer2::Config](https://metacpan.org/pod/Dancer2::Config). It is a
+    complete list of all configuration options.
+
+- Dancer2 Plugins
+
+    Refer to [Dancer2::Plugins](https://metacpan.org/pod/Dancer2::Plugins) for a partial list of available Dancer2
+    plugins. Note that although we try to keep this list up to date we
+    expect plugin authors to tell us about new modules.
+
+    For information on how to author a plugin, see ["Writing the plugin" in Dancer2::Plugin](https://metacpan.org/pod/Dancer2::Plugin#Writing-the-plugin).
+
+- Dancer2 Migration guide
+
+    [Dancer2::Manual::Migration](https://metacpan.org/pod/Dancer2::Manual::Migration) provides the most up-to-date instruction on
+    how to convert a Dancer (1) based application to Dancer2.
+
+# FUNCTIONS
+
+## my $runner=runner();
+
+Returns the current runner. It is of type [Dancer2::Core::Runner](https://metacpan.org/pod/Dancer2::Core::Runner).
+
+# AUTHORS
+
+## CORE DEVELOPERS
+
+    Alberto Simões
+    Alexis Sukrieh
+    Damien Krotkine
+    David Precious
+    Franck Cuny
+    Jason A. Crome
+    Mickey Nasriachi
+    Peter Mottram (SysPete)
+    Russell Jenkins
+    Sawyer X
+    Stefan Hornburg (Racke)
+    Steven Humphrey
+    Yanick Champoux
+
+## CORE DEVELOPERS EMERITUS
+
+    David Golden
+
+## CONTRIBUTORS
+
+    A. Sinan Unur
+    Ahmad M. Zawawi
+    Alex Beamish
+    Alexander Karelas
+    Alexandr Ciornii
+    Andrew Beverley
+    Andrew Grangaard
+    Andrew Inishev
+    Andrew Solomon
+    Andy Jack
+    Ashvini V
+    B10m
+    Bas Bloemsaat
+    baynes
+    Ben Hutton
+    Blabos de Blebe
+    Breno G. de Oliveira
+    cdmalon
+    Celogeek
+    Cesare Gargano
+    Charlie Gonzalez
+    chenchen000
+    Chi Trinh
+    Christian Walde
+    Colin Kuskie
+    cym0n
+    Dale Gallagher
+    Daniel Muey
+    Daniel Perrett
+    David Steinbrunner
+    David Zurborg
+    Davs
+    Dennis Lichtenthäler
+    Dinis Rebolo
+    dtcyganov
+    Erik Smit
+    Fayland Lam
+    Gabor Szabo
+    geistteufel
+    Gideon D'souza
+    Graham Knop
+    Gregor Herrmann
+    Grzegorz Rożniecki
+    Hobbestigrou
+    Ivan Bessarabov
+    Ivan Kruglov
+    JaHIY
+    Jakob Voss
+    James Aitken
+    James Raspass
+    James McCoy
+    Jason Lewis
+    Javier Rojas
+    Jean Stebens
+    Jens Rehsack
+    Joel Berger
+    Jonathan Scott Duff
+    Julien Fiegehenn
+    Julio Fraire
+    Kaitlyn Parkhurst (SYMKAT)
+    kbeyazli
+    Keith Broughton
+    lbeesley
+    Lennart Hengstmengel
+    Ludovic Tolhurst-Cleaver
+    Mark A. Stratman
+    Masaaki Saito
+    Mateu X Hunter
+    Matt Phillips
+    Matt S Trout
+    Maurice
+    Menno Blom
+    Michael Kröll
+    Michał Wojciechowski
+    Mohammad S Anwar
+    mokko
+    Nick Patch
+    Nick Tonkin
+    Nikita K
+    Nuno Carvalho
+    Olaf Alders
+    Olivier Mengué
+    Omar M. Othman
+    pants
+    Patrick Zimmermann
+    Pau Amma
+    Paul Cochrane
+    Pedro Bruno
+    Pedro Melo
+    Philippe Bricout
+    Ricardo Signes
+    Rick Yakubowski
+    Ruben Amortegui
+    sakshee3
+    Sam Kington
+    Samit Badle
+    Shlomi Fish
+    simbabque
+    Slava Goltser
+    Snigdha
+    Tatsuhiko Miyagawa
+    Tina Müller
+    Tom Hukins
+    Upasana Shukla
+    Vernon Lyon
+    Victor Adam
+    Vince Willems
+    Vincent Bachelier
+    Yves Orton
+
+# AUTHOR
+
+Dancer Core Developers
+
+# COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2016 by Alexis Sukrieh.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
