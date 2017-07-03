@@ -41,11 +41,9 @@ When the application be deployed, open some browser and access it at "localhost:
 
 In the third step, possibly, it will misses some module. When that happens, it shows a message saying the name of the missed module. This way, just use the commands "cpan install <Name::OfThe::Module>" to install the missed modules. See how to install some of the modules that are commonly missed:
 
-    ```
-    $ cpan install Dancer2::Plugin::Database *same paragraph*
-    $ cpan install DBD::SQLite *same paragraph*
-    $ cpan install Plack::Runner *same paragraph*
-    ```
+    $ cpan install Dancer2::Plugin::Database
+    $ cpan install DBD::SQLite
+    $ cpan install Plack::Runner
 
 When the installation of the missed modules is finished, repeat the commands "plackup bin/app.pl" to deploy the application. When the application deploys, go to the browser and access: localhost:5000 to check the application running.
 
