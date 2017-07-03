@@ -21,9 +21,9 @@ For Unix (Mac or Linux) users, Perl is a native language. This way, it is not ne
 
 For both type of Operational Systems, it will be necessary to install the Dancer framework. To do it, use CPAN (Comprehensive Perl Archive Network). CPAN is a great set of modules and even a module mananger application. It is installed with one of the above mentioned environments (Strawberry, Dwinperl or Activeperl). Once the environment is installed, use the commands "cpan install Dancer2" in the terminal, to install Dancer2 framework. See the example:
 
-    ```sh
-    $ cpan install Dancer2
-    ```
+```sh
+$ cpan install Dancer2
+```
 
 The Perl Dancer2 framework will be downloaded and installed, and with it, lots of mandatory modules will be installed too.
 
@@ -31,27 +31,27 @@ The Perl Dancer2 framework will be downloaded and installed, and with it, lots o
 
 When Perl Dancer2 installation is finished, download Rêve application at: https://github.com/cicerocaze/reve.git. Throught the terminal, access the folder of the application and use the commands bellow to deploy Rêve, locally:
 
-    ```sh
-    $ plackup bin/app.pl
-    ```
+```sh
+$ plackup bin/app.pl
+```
 
 The application has to be deployed with the following message in the terminal:
 
-    ```sh
-    HTTP::Server::PSGI: Accepting connections at http://0:5000/
-    ```
+```sh
+HTTP::Server::PSGI: Accepting connections at http://0:5000/
+```
 
 When the application be deployed, open some browser and access it at "localhost:5000" to see the application running.
 
 ## Final considerations
 
 In the third step, possibly, it will misses some module. When that happens, it shows a message saying the name of the missed module. This way, just use the commands "cpan install <Name::OfThe::Module>" to install the missed modules. See how to install some of the modules that are commonly missed:
-    
-    ```sh
-    $ cpan install Dancer2::Plugin::Database
-    $ cpan install DBD::SQLite
-    $ cpan install Plack::Runner
-    ```
+
+```sh
+$ cpan install Dancer2::Plugin::Database
+$ cpan install DBD::SQLite
+$ cpan install Plack::Runner
+```
 
 When the installation of the missed modules is finished, repeat the commands "plackup bin/app.pl" to deploy the application. When the application deploys, go to the browser and access: localhost:5000 to check the application running.
 
