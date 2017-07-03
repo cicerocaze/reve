@@ -7,13 +7,13 @@ Reve is a web application based on Perl Dancer framework. This application is de
 
 ## About Installation
 
-The same applies to the deploying of any application based on Perl Dancer framework. The difference is related to the modules the application requires to be deployed. To check some quick example, please, visit http://perldancer.org/quickstart. Bellow, It is explained the needs and steps to deploy Rêve application.
+Rêve installation follows the procedures of any application based on Perl Dancer framework. The difference is related to the modules the application requires to be deployed. To check some quick example, please, visit http://perldancer.org/quickstart. Bellow, It is explained the needs and steps to deploy Rêve application.
 
 ## Installing Rêve
 
 ### 1 - Install Perl environment
 
-Equally to Dancer Framework, depending on the operating system, needs to have the Perl environment setted to be deployed. For Windows users, there are some environments used, like: Strawberry Perl (http://strawberryperl.com/), Dwimperl (http://dwimperl.com/) or ActivePerl (https://www.activestate.com/activeperl) .
+Equally to Dancer Framework, depending on the operating system, Rêve needs to have the Perl environment setted to be deployed. For Windows users, there are some environments most used, like: Strawberry Perl (http://strawberryperl.com/), Dwimperl (http://dwimperl.com/) or ActivePerl (https://www.activestate.com/activeperl) .
 
 For Unix (Mac or Linux) users, Perl is a native language. This way, it is not necessary to install Perl compiler or any environment.
 
