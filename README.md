@@ -3,11 +3,11 @@
 
 ## About Rêve
 
-Reve is a web application based on Perl Dancer framework. This application is developed to help linguist professionals to create annotations about linguistic corpus data.
+Rêve is a web application based on Perl Dancer framework. This application is developed to help linguist professionals to create annotations about linguistic corpus data.
 
 ## About Installation
 
-Rêve installation follows the procedures of any application based on Perl Dancer framework. The difference is related to the modules the application requires to be deployed. To check some quick example, please, visit http://perldancer.org/quickstart. Bellow, It is explained the needs and steps to deploy Rêve application.
+Rêve installation follows the procedures of any application based on Perl Dancer framework. The difference is related to the modules the application requires to be deployed. To check some quick example, please, visit http://perldancer.org/quickstart. Bellow, it is explained the needs and steps to deploy Rêve application.
 
 ## Installing Rêve
 
@@ -45,7 +45,7 @@ When the application be deployed, open some browser and access it at "localhost:
 
 ## Final considerations
 
-In the third step, possibly, it will misses some module. When that happens, it shows a message saying the name of the missed module. This way, just use the commands "cpan install <Name::OfThe::Module>" to install the missed modules. See how to install some of the modules that are commonly missed:
+In the third step, possibly, it will miss some module. When that happens, it shows a message saying the name of the missed module. This way, just use the commands "cpan install <Name::OfThe::Module>" to install the missed modules. See how to install some of the modules that are commonly missed:
 
 ```sh
 $ cpan install Dancer2::Plugin::Database
