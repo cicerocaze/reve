@@ -38,13 +38,7 @@
 	  </tbody>
 
 	</table>
-	<script language="javascript" type="text/javascript">
-	$(".table").calcTable({
-		"skipFirstColumn" : true,
-		"totalText": "<strong>Totais</strong>",
-		"totalClass": "className anotherClassName"
-	});
-</script>
+	<script href="../../graphics"></script>
 </div>
 
 
