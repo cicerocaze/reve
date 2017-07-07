@@ -22,7 +22,6 @@
 		  <% FOREACH user IN by_author.keys.sort %>
 			<th><% user %></th>
 		  <% END %>
-		  <!--<th>Totais</th>-->
 		  
 		</tr>
 	  </thead>
