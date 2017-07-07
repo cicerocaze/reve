@@ -36,12 +36,7 @@
 		</tr>
 		<% END %>
 	  </tbody>
-		<!--<tfoot>
-			<tr>
-				<td>Totais</td>
-				
-			</tr>
-		</tfoot>-->
+
 	</table>
 	<script language="javascript" type="text/javascript">
 	$(".table").calcTable({
