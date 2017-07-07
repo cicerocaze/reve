@@ -28,4 +28,4 @@ engines:
 plugins:
    Database:
      driver: 'SQLite'
-     database: '../db/reve.sqlite'
+     database: 'db/reve.sqlite'
