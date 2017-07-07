@@ -251,6 +251,7 @@ get '/review/*' => sub {
 
 #------------------------------------------------------------
 
+
 get '/bootstrap/*' => sub {
 	my ($id) = splat;
 
@@ -267,7 +268,7 @@ get '/bootstrap/*' => sub {
 	}
 };
 
-
+=pod
 get '/bootstrap/*/*' => sub {
 	my ($id, $user) = splat;
 
@@ -284,12 +285,13 @@ get '/bootstrap/*/*' => sub {
                                bootstrap => 1,
 	}
 };
+=cut
 
 #------------------------------------------------------------
 #Remove projeto da Base de dados
 #------------------------------------------------------------
 
-post '/remov/*' => sub {
+get '/remove/*' => sub {
 	my ($id) = splat;
 
 	my $concs = _get_concs($id);
