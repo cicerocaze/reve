@@ -36,9 +36,7 @@
 		</tr>
 		<% END %>
 	  </tbody>
-
 	</table>
-	<script href="../../graphics"></script>
 </div>
 
 
