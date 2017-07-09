@@ -292,18 +292,17 @@ get '/bootstrap/*/*' => sub {
 get '/remove/*' => sub {
 	my ($id) = splat;
 
-	my $concs = _get_concs($id);
-	$concs = [
-		map {$concs->{$_}} sort { $a <=> $b } keys %$concs
+	my $revs = _get_concs($id);
+	$revs = [
+		map {$revs->{$_}} sort { $a <=> $b } keys %$revs
 	];
 
-	template 'project' => {
+	template 'remove_project' => {
 		project   => _get_project($id),
-		concs     => $concs,
+		concs     => $revs,
 		classes   => _get_classes($id),
 		bootstrap => 1,
 	}
-
 };
 #------------------------------------------------------------
 
