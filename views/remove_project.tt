@@ -3,7 +3,7 @@
 	$(function () {
 		esconder_revisoes();
 		<% IF from_user %>
-			obtain_user_name_to_review("<% from_user %>");
+			obtain_user_name_to_remove_project("<% from_user %>");
 		<% ELSE %>
 			obtain_user_name();
 		<% END %>

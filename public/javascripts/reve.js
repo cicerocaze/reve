@@ -20,16 +20,15 @@ function obtain_user_name_to_review (other_user) {
 }
 
 
-/*
 function obtain_user_name_to_remove_project (other_user) {
-    var password = null;
+    var username = null;
     username = prompt("Introduza a senha do utilizador.");
 
-    if (!password {
+    if (!username {
 	window.location = $("#uri_base").val();
     }
 
-    $("#password").val(password);
+    $("#username").val(username);
 
     $.ajax({
         dataType: "json",
@@ -40,7 +39,6 @@ function obtain_user_name_to_remove_project (other_user) {
         }
     });
 }
-*/
 
 function esconder_revisoes() {
 	$(".revisoes").hide();
