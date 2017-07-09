@@ -19,16 +19,17 @@ function obtain_user_name_to_review (other_user) {
     });
 }
 
-/*
-function obtain_user_name_to_remove_project (other_user) {
-    var username = null;
-    username = prompt("Introduza nome do utilizador.");
 
-    if (!username) {
+//
+function obtain_user_name_to_remove_project (other_user) {
+    var password = null;
+    username = prompt("Introduza a senha do utilizador.");
+
+    if (!password {
 	window.location = $("#uri_base").val();
     }
 
-    $("#username").val(username);
+    $("#password").val(password);
 
     $.ajax({
         dataType: "json",
@@ -39,7 +40,6 @@ function obtain_user_name_to_remove_project (other_user) {
         }
     });
 }
-*/
 
 function esconder_revisoes() {
 	$(".revisoes").hide();
