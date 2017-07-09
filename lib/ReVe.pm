@@ -7,7 +7,7 @@ use Try::Tiny;
 
 #include_php_vars("/linguateca/www/html/acesso/var_corpora.php");
 #line 10
-# put this line number in the line above
+#put this line number in the line above
 
 our $debug = 0;
 our $VERSION = '0.1';
@@ -251,7 +251,7 @@ get '/review/*' => sub {
 
 #------------------------------------------------------------
 
-
+#Anotar
 get '/bootstrap/*' => sub {
 	my ($id) = splat;
 
@@ -268,7 +268,7 @@ get '/bootstrap/*' => sub {
 	}
 };
 
-=pod
+#Rever Anotação
 get '/bootstrap/*/*' => sub {
 	my ($id, $user) = splat;
 
@@ -285,12 +285,10 @@ get '/bootstrap/*/*' => sub {
                                bootstrap => 1,
 	}
 };
-=cut
 
 #------------------------------------------------------------
 #Remove projeto da Base de dados
 #------------------------------------------------------------
-
 get '/remove/*' => sub {
 	my ($id) = splat;
 
@@ -305,8 +303,8 @@ get '/remove/*' => sub {
 		classes   => _get_classes($id),
 		bootstrap => 1,
 	}
-};
 
+};
 #------------------------------------------------------------
 
 get '/details/*/*' => sub {
@@ -338,18 +336,20 @@ post '/save/*' => sub {
     my %fields  = params();
 	my @classes = grep { /^class\d+$/ } keys %fields;
 
-        _clear_annotations_project_user($id, $username);
+	_clear_annotations_project_user($id, $username);
 
 	for my $class (@classes) {
-            my $v = $fields{$class};
-            my @values = (ref($v) || "") eq "ARRAY" ? @$v : $v;
+        my $v = $fields{$class};
+        my @values = (ref($v) || "") eq "ARRAY" ? @$v : $v;
 
-            for my $val (@values) {
-                $class =~ /class(\d+)/;
-	 	my $conc_id = $1;
-	 	_save_revision($id, $conc_id, $val, $fields{"obs$conc_id"}, $username);
-            }
-        }
+        for my $val (@values) {
+            $class =~ /class(\d+)/;
+		my $conc_id = $1;
+		
+		_save_revision($id, $conc_id, $val, $fields{"obs$conc_id"}, $username);
+		
+		}
+    }
 
         redirect '/';
 };
@@ -361,6 +361,16 @@ get '/' => sub {
 };
 
 
+#----------------------------------------
+# Sub-rotina para remoção de projeto
+#----------------------------------------
+sub _remove_project {
+    my ($id, $username) = @_;
+
+    my $sth = database->prepare("DELETE FROM rev WHERE username = ? AND conc_id IN (SELECT id FROM conc WHERE rev_id = ?)");
+    $sth->execute($username, $id);
+}
+#----------------------------------------
 
 # CREATE TABLE "rev" ("id" INTEGER PRIMARY KEY IA,
 #                     "titulo",
@@ -412,16 +422,6 @@ sub _clear_annotations_project_user {
     $sth->execute($username, $id);
 }
 
-#----------------------------------------
-# Sub-rotina para remoção de projeto
-#----------------------------------------
-sub _remove_project {
-    my ($id) = @_;
-
-    my $sth = database->prepare("DELETE FROM rev WHERE id = ?");
-    $sth->execute($id);
-}
-#----------------------------------------
 
 # CREATE TABLE "revision" ("conc_id" INTEGER NOT NULL,
 #                          "class_id" INTEGER NOT NULL,
@@ -447,9 +447,7 @@ sub _get_latest_revision {
 
 sub _save_revision {
 	my ($id, $conc_id, $classe, $obs, $username) = @_;
-	my $dbh = database->prepare(q{
-		INSERT OR REPLACE INTO revision VALUES (?,?,?,?,?);
-		});
+	my $dbh = database->prepare(q{INSERT OR REPLACE INTO revision VALUES (?,?,?,?,?);});
 	$dbh->execute($conc_id, $classe, $username, time, $obs);
 }
 
