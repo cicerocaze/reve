@@ -292,7 +292,7 @@ get '/bootstrap/*/*' => sub {
 get '/remove/*' => sub {
 	my ($id) = splat;
 
-	my $revs = _get_concs($id);
+	my $revs = _get_revs($id);
 	$revs = [
 		map {$revs->{$_}} sort { $a <=> $b } keys %$revs
 	];
@@ -395,6 +395,11 @@ sub _get_project {
 sub _get_concs {
 	my $id = shift;
 	+{ map { ($_->{id} => $_)} (database->quick_select('conc', { rev_id => $id })) }
+}
+
+sub _get_revs {
+	my $id = shift;
+	+{ map { ($_->{id} => $_)} (database->quick_select('rev', { rev_id => $id })) }
 }
 
 sub _get_conc {
