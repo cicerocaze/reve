@@ -1,4 +1,4 @@
-
+<!--Passo 3 - Buscar sentenças nos corpora-->
 <form action="<% request.uri_base %>/new" method="POST">
 	<input type="hidden" name="step" value="2"/>
 
