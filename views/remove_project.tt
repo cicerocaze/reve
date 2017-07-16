@@ -9,3 +9,79 @@
 	});
 	var project_id = <% project.id %>;
 </script>
+
+<form action="<% request.uri_base %>/save/<% project.id %>"
+      method="POST" >
+	  <input type="text" style="float: right;" readonly
+       id="username" name="username"/>
+
+<h2><% project.titulo %></h2>
+<input type="hidden" id="id" value="<% project.id %>"/>
+
+<blockquote>
+  <% project.desc %>
+</blockquote>
+
+<% UNLESS bootstrap %>
+<button onClick="toggle_revisoes($(this)); return false;">Mostrar Revisões</button>
+<% END %>
+
+
+<input type="submit" name="save" value="Guardar"/>
+<% FOREACH conc IN concs %>
+ <div class="conc">
+   <div class="class">
+
+     <dl class="dropdown" id="drop<% conc.id %>"> 
+  
+    <dt>
+      <span class="hida">Selecionar...</span>    
+      <p class="multiSel"></p>  
+    </dt>
+  
+    <dd>
+      <div class="mutliSelect">
+        <ul>
+            
+          <% FOREACH class IN classes %>
+          <li>
+            <label>
+              <input type="checkbox" name="class<% conc.id %>"
+                     value="<% class.id %>" label="<% class.name %>"/>
+              <% class.name %>
+            </label>
+          </li>
+          <% END %>
+
+        </ul>
+      </div>
+    </dd>
+</dl>
+
+      <textarea id="obs<% conc.id %>" name="obs<% conc.id %>"></textarea>
+   </div>
+   <div class="text">
+     <% conc.text %>
+   </div>
+
+   <% IF conc.class %>
+      <div class="revisoes">
+      <b>Histórico</b>
+      <% FOREACH r IN conc.revs %>
+        <div>
+           <% FOREACH c IN classes %>
+             <% IF c.id == r.class_id %><% c.name %><% END %>
+           <% END %>         
+         <i>por <% r.username %> em <% r.timestamp %></i>
+         <% IF r.obs %>(<% r.obs %>)<% END %>
+        </div>
+      <% END %>
+   </div>
+   <% END %>
+
+   <div class="clear"></div>
+ </div>
+<% END %>
+<input type="submit" name="save" value="Guardar"/>
+
+</form>

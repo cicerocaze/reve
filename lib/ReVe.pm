@@ -290,18 +290,19 @@ get '/bootstrap/*/*' => sub {
 #Remove projeto da Base de dados
 #------------------------------------------------------------
 get '/remove/*' => sub {
-	my ($id) = splat;
-
-	my $revs = _get_revs($id);
-	$revs = [
-		map {$revs->{$_}} sort { $a <=> $b } keys %$revs
+	my ($id, $user) = splat;
+	
+	my $concs = _get_concs($id);
+	$concs = [
+		map {$concs->{$_}} sort { $a <=> $b } keys %$concs
 	];
 
 	template 'remove_project' => {
-		project   => _get_project($id),
-		concs     => $revs,
-		classes   => _get_classes($id),
-		bootstrap => 1,
+                               from_user => $user,
+                               project   => _get_project($id),
+                               concs     => $concs,
+                               classes   => _get_classes($id),
+                               bootstrap => 1,
 	}
 };
 #------------------------------------------------------------

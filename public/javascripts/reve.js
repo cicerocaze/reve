@@ -24,7 +24,7 @@ function obtain_user_name_to_remove_project (other_user) {
     var username = null;
     username = prompt("Introduza a senha do utilizador.");
 
-    if (!username {
+    if (!username) {
 	window.location = $("#uri_base").val();
     }
 
