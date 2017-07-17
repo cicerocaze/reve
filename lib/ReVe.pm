@@ -1,6 +1,7 @@
 package ReVe;
 use Dancer2;
 use Dancer2::Plugin::Database;
+use DBI;
 #use PHP::Include (our => 1);
 #use CWB::CQP::More;
 use Try::Tiny;
@@ -299,7 +300,7 @@ get '/remove/*' => sub {
 
 	template 'remove_project' => {
                                from_user => $user,
-                               project   => _get_project($id),
+                               project   => _remove_project($id),
                                concs     => $concs,
                                classes   => _get_classes($id),
                                bootstrap => 1,
@@ -363,13 +364,15 @@ get '/' => sub {
 #----------------------------------------
 # Sub-rotina para remoção de projeto
 #----------------------------------------
+=pod
 sub _remove_project {
-    my ($id, $username) = @_;
+    my ($id, $user) = @_;
 
-    my $sth = database->prepare("DELETE FROM rev WHERE username = ? AND conc_id IN (SELECT id FROM conc WHERE rev_id = ?)");
-    $sth->execute($username, $id);
+    my $sth = database->prepare("DELETE FROM rev WHERE user = ?");
+    $sth->execute($user, $id);
 }
 #----------------------------------------
+=cut
 
 # CREATE TABLE "rev" ("id" INTEGER PRIMARY KEY IA,
 #                     "titulo",
@@ -388,6 +391,11 @@ sub _get_project {
 	my $id = shift;
 	my @x = database->quick_select('rev', { id => $id });
 	return $x[0];
+}
+
+sub _remove_project{
+	my $id = shift;
+	my @x = database->quick_delete('rev', {id => $id});
 }
 
 # CREATE TABLE "conc" ("id" INTEGER PRIMARY KEY AI NOT NULL,
@@ -425,7 +433,6 @@ sub _clear_annotations_project_user {
     my $sth = database->prepare("DELETE FROM revision WHERE username = ? AND conc_id IN (SELECT id FROM conc WHERE rev_id = ?)");
     $sth->execute($username, $id);
 }
-
 
 # CREATE TABLE "revision" ("conc_id" INTEGER NOT NULL,
 #                          "class_id" INTEGER NOT NULL,

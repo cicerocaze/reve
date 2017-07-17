@@ -20,7 +20,7 @@ function obtain_user_name_to_review (other_user) {
 }
 
 //Função botão Remover Projeto
-function obtain_user_name_to_remove_project (other_user) {
+function obtain_password_to_remove_project (other_user) {
     var username = null;
     username = prompt("Introduza a senha do utilizador.");
 
