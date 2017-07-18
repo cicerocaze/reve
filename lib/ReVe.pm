@@ -290,21 +290,22 @@ get '/bootstrap/*/*' => sub {
 #------------------------------------------------------------
 #Remove projeto da Base de dados
 #------------------------------------------------------------
-get '/remove/*' => sub {
-	my ($id, $user) = splat;
-	
-	my $concs = _get_concs($id);
-	$concs = [
-		map {$concs->{$_}} sort { $a <=> $b } keys %$concs
-	];
+get '/rem_val/*' => sub {
+	my $pass = 'q1w2e3@#$';
+	my ($id) = splat;
 
-	template 'remove_project' => {
-                               from_user => $user,
-                               project   => _remove_project($id),
-                               concs     => $concs,
-                               classes   => _get_classes($id),
-                               bootstrap => 1,
+	template 'rem_val' => {
+		from_pass => $pass,
 	}
+};
+
+get '/rem_proj/*' => sub {
+	my ($id, $pass) = splat;
+	
+	template 'rem_proj' => {
+		projeto => _remove_project($id),
+	}
+	
 };
 #------------------------------------------------------------
 
@@ -356,23 +357,10 @@ post '/save/*' => sub {
 };
 
 get '/' => sub {
-    template 'index' => {
-    	current => _get_projects()
+    template 'index' => {		
+    	current => _get_projects(),
     }
 };
-
-#----------------------------------------
-# Sub-rotina para remoção de projeto
-#----------------------------------------
-=pod
-sub _remove_project {
-    my ($id, $user) = @_;
-
-    my $sth = database->prepare("DELETE FROM rev WHERE user = ?");
-    $sth->execute($user, $id);
-}
-#----------------------------------------
-=cut
 
 # CREATE TABLE "rev" ("id" INTEGER PRIMARY KEY IA,
 #                     "titulo",

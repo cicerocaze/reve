@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$("#sim").hide();
+	$("#cancelar").hide();
+	$("#pergunta").hide();
+	
+	function obtain_password_to_remove_project() {
+		
+		var pass = $("#password").val();
+		
+		if(pass == "<%from_pass%>"){
+			
+			$("#sim").show();
+			$("#cancelar").show();
+			$("#pergunta").show();
+			$("#pass").hide();
+			
+			//alert("Projeto removido com sucesso.");
+			//window.location = $("#uri_base").val();
+		
+		}else{
+			alert("Senha incorreta.");
+		}
+    };
+	
+	$("#pass").button().on("click", function() {
+		obtain_password_to_remove_project();
+		console.log("<%from_pass%>");
+    });
+
+});
+
+</script>
+	<div id="dialog_form" title="Remover projeto">
+		<h5>Senha:</h5>
+		<form>
+			<fieldset>
+				<input type="password" id="password" value="">
+			</fieldset>			
+		</form>
+	</div>
+	<div>
+		<p id="pergunta">Tem certeza que deseja remover este projeto?<p>
+	</div>
+	<div>
+		<a id="sim" href="<% request.uri_base%>/rem_proj/<% rev.id %>"><span></span>Sim |</a>
+		<a id="cancelar" href="<% request.uri_base%>"><span></span> Cancelar</a>
+	</div>
+
+<br>
+<button id="pass">Remover projeto</button>
+</head>
+<html>
