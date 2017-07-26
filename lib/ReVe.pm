@@ -293,19 +293,24 @@ get '/bootstrap/*/*' => sub {
 get '/rem_val/*' => sub {
 	my $pass = 'q1w2e3@#$';
 	my ($id) = splat;
-
+	
+	
 	template 'rem_val' => {
+		from_id => $id,
 		from_pass => $pass,
+		#projeto => _remove_project($id),
 	}
 };
 
 get '/rem_proj/*' => sub {
-	my ($id, $pass) = splat;
+	my $pass = 'q1w2e3@#$';
+	my ($id) = splat;
 	
 	template 'rem_proj' => {
+		from_id => $id,
+		from_pass => $pass,
 		projeto => _remove_project($id),
 	}
-	
 };
 #------------------------------------------------------------
 

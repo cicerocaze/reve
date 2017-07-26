@@ -5,24 +5,18 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-	$("#sim").hide();
-	$("#cancelar").hide();
-	$("#pergunta").hide();
+	$("#remove").hide();
+	$("#message").hide();
 	
 	function obtain_password_to_remove_project() {
-		
 		var pass = $("#password").val();
+		var id = "<%from_id%>";
 		
 		if(pass == "<%from_pass%>"){
-			
-			$("#sim").show();
-			$("#cancelar").show();
-			$("#pergunta").show();
 			$("#pass").hide();
+			$("#remove").show();
+			$("#message").show();
 			
-			//alert("Projeto removido com sucesso.");
-			//window.location = $("#uri_base").val();
-		
 		}else{
 			alert("Senha incorreta.");
 		}
@@ -30,12 +24,11 @@ $(document).ready(function(){
 	
 	$("#pass").button().on("click", function() {
 		obtain_password_to_remove_project();
-		console.log("<%from_pass%>");
     });
-
 });
 
 </script>
+	
 	<div id="dialog_form" title="Remover projeto">
 		<h5>Senha:</h5>
 		<form>
@@ -44,15 +37,15 @@ $(document).ready(function(){
 			</fieldset>			
 		</form>
 	</div>
-	<div>
-		<p id="pergunta">Tem certeza que deseja remover este projeto?<p>
-	</div>
-	<div>
-		<a id="sim" href="<% request.uri_base%>/rem_proj/<% rev.id %>"><span></span>Sim |</a>
-		<a id="cancelar" href="<% request.uri_base%>"><span></span> Cancelar</a>
-	</div>
-
 <br>
-<button id="pass">Remover projeto</button>
+
+<button id="pass">Remover Projeto</button>
+
+<div id="remove">
+	<p>Tem certeza que deseja remover este projeto?</p>
+	<a href="<% request.uri_base%>/rem_proj/<% from_id %>"> Sim |</a>
+	<a href="<% request.uri_base%>"> Cancelar</a>
+</div>
+
 </head>
 <html>

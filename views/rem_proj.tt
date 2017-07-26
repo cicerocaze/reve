@@ -1,22 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-
 <script type="text/javascript">
-	$(function () {
-		esconder_revisoes();
-		<% IF from_user %>
-			obtain_user_name_to_review("<% from_user %>");
-		<% ELSE %>
-			obtain_user_name();
-		<% END %>
-	});
-	var project_id = <% project.id %>;
-	$(document).ready(function(){
-			window.location = $("#uri_base").val();
-		});
+	alert("Projeto removido com sucesso.");
+	window.location = $("#uri_base").val();
 </script>
-</body>
-</html>

@@ -19,6 +19,8 @@ function obtain_user_name_to_review (other_user) {
     });
 }
 
+
+
 function esconder_revisoes() {
 	$(".revisoes").hide();
 }
