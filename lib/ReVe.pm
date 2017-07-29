@@ -298,19 +298,16 @@ get '/rem_val/*' => sub {
 	template 'rem_val' => {
 		from_id => $id,
 		from_pass => $pass,
-		#projeto => _remove_project($id),
 	}
 };
 
 get '/rem_proj/*' => sub {
-	my $pass = 'q1w2e3@#$';
 	my ($id) = splat;
 	
 	template 'rem_proj' => {
 		from_id => $id,
-		from_pass => $pass,
 		projeto => _remove_project($id),
-	}
+	};
 };
 #------------------------------------------------------------
 

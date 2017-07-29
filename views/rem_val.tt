@@ -15,8 +15,7 @@ $(document).ready(function(){
 		if(pass == "<%from_pass%>"){
 			$("#pass").hide();
 			$("#remove").show();
-			$("#message").show();
-			
+			$("#message").show();	
 		}else{
 			alert("Senha incorreta.");
 		}
@@ -43,7 +42,7 @@ $(document).ready(function(){
 
 <div id="remove">
 	<p>Tem certeza que deseja remover este projeto?</p>
-	<a href="<% request.uri_base%>/rem_proj/<% from_id %>"> Sim |</a>
+	<a id="route" href="<% request.uri_base%>/rem_proj/<% from_id %>"> Sim |</a>
 	<a href="<% request.uri_base%>"> Cancelar</a>
 </div>
 

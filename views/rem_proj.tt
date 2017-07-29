@@ -1,4 +1,3 @@
 <script type="text/javascript">
-	alert("Projeto removido com sucesso.");
 	window.location = $("#uri_base").val();
 </script>
