@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html>
+<head>
 <style type="text/css">	
 	.table-nonfluid {
 		width: auto !important;
@@ -38,13 +41,11 @@
 </div>
 
 <!--GRAFICOS CONTABILIZAÇÃO INDEPENDENTE-->
-<div>
         <h3>Gráfico Barras - Contabilização Independente</h3>
         <p></p>
-
-        <div class="air">
             <canvas id="cont_indep" style="width:100%;"></canvas>
             <script type="text/javascript">
+			//$(document).ready(function(){
 				 //UserLabels para ChartJs				 
 				 var ths = document.getElementsByTagName('th');
 				 var userLabels = [];
@@ -109,10 +110,9 @@
 				window.onload = function(){
                     var ctx = document.getElementById("cont_indep").getContext("2d");
                     var BarChart = new Chart(ctx).Bar(data, options);
-                };           
+                };
+			//});				
             </script>
-    </div>    
-</div>
 
 <div class="air">
 <h3>Contabilização Combinatória</h3>
@@ -139,7 +139,6 @@
 </table>
 </div>
 
-
 <div class="air">
 <h3>Discordâncias</h3>
 <ul>
@@ -156,3 +155,11 @@
 <% END %>
 </ul>
 </div>
+</head>
+<body>
+
+</body>			
+</html>
+
+
+
