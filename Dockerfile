@@ -1,5 +1,5 @@
-FROM perl:latest
-MAINTAINER Florentin Raud flo@ngineered.co.uk
+FROM perl
+MAINTAINER Cicero Caze cicerocaze@gmail.com
 
 RUN apt-get update && \
 apt-get upgrade -y && \
