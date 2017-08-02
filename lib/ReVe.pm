@@ -294,7 +294,6 @@ get '/rem_val/*' => sub {
 	my $pass = 'q1w2e3@#$';
 	my ($id) = splat;
 	
-	
 	template 'rem_val' => {
 		from_id => $id,
 		from_pass => $pass,
