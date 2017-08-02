@@ -188,7 +188,7 @@
             });
         };
         var labels = classLabels2;
-        var options2 = {
+        var options = {
             responsive: true
         };
         var data2 = {
@@ -223,19 +223,17 @@
             var BarChart = new Chart(ctx).Bar(data, options);
 
             var ctx2 = document.getElementById("cont_comb").getContext("2d");
-            var BarChart2 = new Chart(ctx2).Bar(data2, options2);
+            var BarChart2 = new Chart(ctx2).Bar(data2, options);
         });
     </script>
 
     <div id="contIndep">
         <h3>Gráfico Barras - Contabilização Independente | <a href="#topo">Voltar ao topo</a></h3>
-        <p></p>
     </div>
     <canvas id="cont_indep" style="width:100%;"></canvas>
-
-    <div id="contComb">
+	 
+	<div id="contComb">
         <h3>Gráfico Barras - Contabilização Combinatória | <a href="#topo">Voltar ao topo</a></h3>
-        <p></p>
     </div>
     <canvas id="cont_comb" style="width:100%;"></canvas>
 
