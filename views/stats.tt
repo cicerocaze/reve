@@ -1,165 +1,244 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<style type="text/css">	
-	.table-nonfluid {
-		width: auto !important;
-	}
 
-	.air {
-		margin-bottom: 30px;
-		margin-left: 10px;
-		margin-right: 10px;
-	}
-</style>
-	
-<div class="air">
-	<h3>Contabilização Independente</h3>
-	<p>Contabilização de categorias de forma independente.
-    Isto leva a que a soma total de cada coluna não seja necessariamente a mesma.</p>
-
-	<table class="table table-striped table-condensed table-nonfluid table-bordered">
-	  <thead>
-		<tr>
-		  <th></th>
-		  <% FOREACH user IN by_author.keys.sort %>
-			<th><% user %></th>
-		  <% END %>	  
-		</tr>
-	  </thead>
-	  <tbody>
-		<% FOREACH class IN classes %>
-		<tr>
-		  <td><% class %></td>
-		  <% FOREACH user IN by_author.keys.sort %>
-			<td><% by_author.$user.$class || 0 %></td>
-		  <% END %>		
-		</tr>
-		<% END %>
-	  </tbody>
-	</table>
-</div>
-
-<!--GRAFICOS CONTABILIZAÇÃO INDEPENDENTE-->
-        <h3>Gráfico Barras - Contabilização Independente</h3>
-        <p></p>
-            <canvas id="cont_indep" style="width:100%;"></canvas>
-            <script type="text/javascript">
-			//$(document).ready(function(){
-				 //UserLabels para ChartJs				 
-				 var ths = document.getElementsByTagName('th');
-				 var userLabels = [];
-				 for(var i = 1; i < ths.length; i++){
-					userLabels.push(ths[i].textContent);
-				};
-				//console.log(userLabels);
-				 
-				 //ClassLabels para ChartJs					 
-				 var tbodies = document.getElementsByTagName("tbody");
-				 var trs = tbodies[0].children;
-				 //var tds = trs[0].children;
-				 var classLabels = [];
-				 for(var i = 0; i < trs.length; i++){
-					classLabels.push(trs[i].children[0].textContent);
-				};
-				 //console.log(classLabels);
-				
-				//UserValues(data) para ChartJs 
-				var values = [];
-				//console.log(values);
-				var userValues = [];
-				for(var i = 1; i < ths.length; i++){
-					for(var j = 0; j < classLabels.length; j++){
-						values.push(trs[j].children[i].textContent);
-					}
-					userValues.push(values);
-					values = [];
-				};
-				//console.log(userValues);
-							
-				//Data para ChartJs
-				//var data = userValues[0];
-				//Datasets para ChartJs
-				var datasets = [];
-				for(var i = 0; i < userLabels.length; i++){
-					//Definição aleatória para cores dos gráficos
-					var r = Math.floor((Math.random() * 255) + 1);				
-					var g = Math.floor((Math.random() * 255) + 1);
-					var b = Math.floor((Math.random() * 255) + 1);
-					var fillColor = "rgba("+r+","+g+","+b+","+ 1+")";
-					var highlightFill = "rgba("+r+","+g+","+b+","+ 0.75+")";
-					
-					datasets.push(
-					{
-						label: ths[i].textContent,
-						fillColor: fillColor,
-						highlightFill: highlightFill,
-						data: userValues[i]
-					})
-				};
-				//console.log(datasets);
-				
-				//var label = [];				
-				var labels = classLabels;
-				var options = {responsive:true};
-				var data = {
-					labels,
-                    datasets
-                };
-				
-				window.onload = function(){
-                    var ctx = document.getElementById("cont_indep").getContext("2d");
-                    var BarChart = new Chart(ctx).Bar(data, options);
-                };
-			//});				
-            </script>
-
-<div class="air">
-<h3>Contabilização Combinatória</h3>
-<p>Nesta contabilização, cada classificação múltipla é considerada como uma categoria independente.</p>
-<table class="table table-striped table-condensed table-nonfluid table-bordered">
-  <thead>
-    <tr>
-      <th></th>
-      <% FOREACH user IN detailed.keys.sort %>
-        <th><% user %></th>
-      <% END %>
-    </tr>
-  </thead>
-  <tbody>
-    <% FOREACH class IN detailed_classes %>
-    <tr>
-      <td><% class %></td>
-      <% FOREACH user IN detailed.keys.sort %>
-        <td><% detailed.$user.$class || 0 %></td>
-      <% END %>
-    </tr>
-    <% END %>
-  </tbody>
-</table>
-</div>
-
-<div class="air">
-<h3>Discordâncias</h3>
-<ul>
-<% FOREACH conc IN by_conc.keys.sort %>
-   <% IF by_conc.$conc.revs.keys.size > 1 %>
-   <li><% by_conc.$conc.conc %>
-     <ul>
-       <% FOREACH class IN by_conc.$conc.revs.keys %>
-       <li><b><% class %>:</b> <% by_conc.$conc.revs.$class.join(", ") %></li>
-       <% END %>
-     </ul>
-   </li>
-   <% END %>
-<% END %>
-</ul>
-</div>
+    <style type="text/css">
+        .table-nonfluid {
+            width: auto !important;
+        }
+        
+        .air {
+            margin-bottom: 30px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    </style>
 </head>
+
 <body>
 
-</body>			
+    <div id="topo"></div>
+
+    <div class="air">
+        <h3>Contabilização Independente</h3>
+        <p>Contabilização de categorias de forma independente. Isto leva a que a soma total de cada coluna não seja necessariamente a mesma.</p>
+
+        <table class="table table-striped table-condensed table-nonfluid table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        <a href="#contIndep">Visualizar Gráfico</a>
+                    </th>
+                    <% FOREACH user IN by_author.keys.sort %>
+                        <th>
+                            <% user %>
+                        </th>
+                        <% END %>
+                </tr>
+            </thead>
+            <tbody>
+                <% FOREACH class IN classes %>
+                    <tr>
+                        <td>
+                            <% class %>
+                        </td>
+                        <% FOREACH user IN by_author.keys.sort %>
+                            <td>
+                                <% by_author.$user.$class || 0 %>
+                            </td>
+                            <% END %>
+                    </tr>
+                    <% END %>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        //UserLabels para ChartJs				 
+        var ths = document.getElementsByTagName('th');
+        var userLabels = [];
+        for (var i = 1; i < ths.length; i++) {
+            userLabels.push(ths[i].textContent);
+        };
+
+        //ClassLabels para ChartJs					 
+        var tbodies = document.getElementsByTagName("tbody");
+        var trs = tbodies[0].children;
+        var classLabels = [];
+        for (var i = 0; i < trs.length; i++) {
+            classLabels.push(trs[i].children[0].textContent);
+        };
+
+        //UserValues(data) para ChartJs 
+        var cont;
+        var values = [];
+        var userValues = [];
+        for (cont = 1; cont <= userLabels.length; cont++) {
+            for (var j = 0; j < classLabels.length; j++) {
+                values.push(trs[j].children[cont].textContent);
+            }
+            userValues.push(values);
+            values = [];
+        };
+
+        //Datasets para ChartJs
+        var datasets = [];
+        for (var i = 0; i < userLabels.length; i++) {
+            //Definição aleatória para cores dos gráficos
+            var r = Math.floor((Math.random() * 255) + 1);
+            var g = Math.floor((Math.random() * 255) + 1);
+            var b = Math.floor((Math.random() * 255) + 1);
+            var fillColor = "rgba(" + r + "," + g + "," + b + "," + 1 + ")";
+            var highlightFill = "rgba(" + r + "," + g + "," + b + "," + 0.75 + ")";
+
+            datasets.push({
+                label: ths[i].textContent,
+                fillColor: fillColor,
+                highlightFill: highlightFill,
+                data: userValues[i]
+            })
+        };
+
+        var labels = classLabels;
+        var options = {
+            responsive: true
+        };
+        var data = {
+            labels,
+            datasets
+        };
+    </script>
+
+    <div class="air">
+        <h3>Contabilização Combinatória</h3>
+        <p>Nesta contabilização, cada classificação múltipla é considerada como uma categoria independente.</p>
+
+        <table class="table table-striped table-condensed table-nonfluid table-bordered">
+            <thead>
+                <tr>
+                    <th><a href="#contComb">Visualizar Gráfico</a></th>
+                    <% FOREACH user IN detailed.keys.sort %>
+                        <th>
+                            <% user %>
+                        </th>
+                        <% END %>
+                </tr>
+            </thead>
+            <tbody>
+                <% FOREACH class IN detailed_classes %>
+                    <tr>
+                        <td>
+                            <% class %>
+                        </td>
+                        <% FOREACH user IN detailed.keys.sort %>
+                            <td>
+                                <% detailed.$user.$class || 0 %>
+                            </td>
+                            <% END %>
+                    </tr>
+                    <% END %>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        //UserLabels para ChartJs				 
+        var ths2 = document.getElementsByTagName('th');
+        var userLabels2 = [];
+        for (var i = 7; i < ths2.length; i++) {
+            userLabels2.push(ths2[i].textContent);
+        };
+
+        //ClassLabels para ChartJs					 
+        var tbodies2 = document.getElementsByTagName("tbody");
+        var trs2 = tbodies2[1].children;
+        var classLabels2 = [];
+        for (var i = 0; i < trs2.length; i++) {
+            classLabels2.push(trs2[i].children[0].textContent);
+        };
+
+        //UserValues(data) para ChartJs 
+        var cont;
+        var values2 = [];
+        var userValues2 = [];
+        for (cont = 1; cont <= userLabels2.length; cont++) {
+            for (var j = 0; j < classLabels2.length; j++) {
+                values2.push(trs2[j].children[cont].textContent);
+            }
+            userValues2.push(values2);
+            values2 = [];
+        };
+
+        //Datasets para ChartJs
+        var datasets = [];
+        for (var i = 0; i < userLabels2.length; i++) {
+            //Definição aleatória para cores dos gráficos
+            var r2 = Math.floor((Math.random() * 255) + 1);
+            var g2 = Math.floor((Math.random() * 255) + 1);
+            var b2 = Math.floor((Math.random() * 255) + 1);
+            var fillColor2 = "rgba(" + r + "," + g + "," + b + "," + 1 + ")";
+            var highlightFill2 = "rgba(" + r + "," + g + "," + b + "," + 0.75 + ")";
+
+            datasets.push({
+                label: ths2[i].textContent,
+                fillColor: fillColor2,
+                highlightFill: highlightFill2,
+                data: userValues2[i]
+            });
+        };
+        var labels = classLabels2;
+        var options2 = {
+            responsive: true
+        };
+        var data2 = {
+            labels,
+            datasets
+        };
+    </script>
+
+    <div class="air">
+        <h3>Discordâncias</h3>
+        <ul>
+            <% FOREACH conc IN by_conc.keys.sort %>
+                <% IF by_conc.$conc.revs.keys.size > 1 %>
+                    <li>
+                        <% by_conc.$conc.conc %>
+                            <ul>
+                                <% FOREACH class IN by_conc.$conc.revs.keys %>
+                                    <li><b><% class %>:</b>
+                                        <% by_conc.$conc.revs.$class.join(", ") %>
+                                    </li>
+                                    <% END %>
+                            </ul>
+                    </li>
+                    <% END %>
+                <% END %>
+        </ul>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            var ctx = document.getElementById("cont_indep").getContext("2d");
+            var BarChart = new Chart(ctx).Bar(data, options);
+
+            var ctx2 = document.getElementById("cont_comb").getContext("2d");
+            var BarChart2 = new Chart(ctx2).Bar(data2, options2);
+        });
+    </script>
+
+    <div id="contIndep">
+        <h3>Gráfico Barras - Contabilização Independente | <a href="#topo">Voltar ao topo</a></h3>
+        <p></p>
+    </div>
+    <canvas id="cont_indep" style="width:100%;"></canvas>
+
+    <div id="contComb">
+        <h3>Gráfico Barras - Contabilização Combinatória | <a href="#topo">Voltar ao topo</a></h3>
+        <p></p>
+    </div>
+    <canvas id="cont_comb" style="width:100%;"></canvas>
+
+</body>
+
 </html>
-
-
-
